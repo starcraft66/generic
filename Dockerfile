@@ -1,5 +1,5 @@
 FROM nginx:alpine
-MAINTAINER SteamCache.Net Team <team@steamcache.net>
+MAINTAINER Tristan Gosselin-Hane <starcraft66@gmail.com>
 
 ENV GENERICCACHE_VERSION 1
 ENV WEBUSER nginx
@@ -16,7 +16,13 @@ RUN	chmod 755 /scripts/*			;\
 	mkdir -m 755 -p /tmp/nginx/		;\
 	chown -R ${WEBUSER}:${WEBUSER} /data/	;\
 	mkdir -p /etc/nginx/sites-enabled	;\
-	ln -s /etc/nginx/sites-available/generic.conf /etc/nginx/sites-enabled/generic.conf
+	mkdir -p /etc/nginx/upstreams		;\
+	ln -s /etc/nginx/sites-available/blizzard.conf /etc/nginx/sites-enabled/blizzard.conf ;\
+	ln -s /etc/nginx/sites-available/generic.conf /etc/nginx/sites-enabled/generic.conf	;\
+	ln -s /etc/nginx/sites-available/origin.conf /etc/nginx/sites-enabled/origin.conf	;\
+	ln -s /etc/nginx/sites-available/riot.conf /etc/nginx/sites-enabled/riot.conf	;\
+	ln -s /etc/nginx/sites-available/steam.conf /etc/nginx/sites-enabled/steam.conf	;\
+	ln -s /etc/nginx/sites-available/winupdate.conf /etc/nginx/sites-enabled/winupdate.conf
 
 VOLUME ["/data/logs", "/data/cache", "/var/www"]
 

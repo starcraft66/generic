@@ -1,0 +1,3 @@
+[submodule "overlay/etc/nginx/cache-domains"]
+	path = overlay/etc/nginx/cache-domains
+	url = https://github.com/uklans/cache-domains
