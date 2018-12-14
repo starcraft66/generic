@@ -6,6 +6,8 @@ ENV WEBUSER nginx
 ENV CACHE_MEM_SIZE 500m
 ENV CACHE_DISK_SIZE 500000m
 ENV CACHE_MAX_AGE 3560d
+ENV UPSTREAM_DNS 8.8.8.8 8.8.4.4
+ENV BEAT_TIME 1h
 
 COPY overlay/ /
 
@@ -21,7 +23,9 @@ RUN	chmod 755 /scripts/*			;\
 	ln -s /etc/nginx/sites-available/generic.conf /etc/nginx/sites-enabled/generic.conf	;\
 	ln -s /etc/nginx/sites-available/origin.conf /etc/nginx/sites-enabled/origin.conf	;\
 	ln -s /etc/nginx/sites-available/riot.conf /etc/nginx/sites-enabled/riot.conf	;\
+	ln -s /etc/nginx/sites-available/sony.conf /etc/nginx/sites-enabled/sony.conf	;\
 	ln -s /etc/nginx/sites-available/steam.conf /etc/nginx/sites-enabled/steam.conf	;\
+	ln -s /etc/nginx/sites-available/uplay.conf /etc/nginx/sites-enabled/uplay.conf	;\
 	ln -s /etc/nginx/sites-available/winupdate.conf /etc/nginx/sites-enabled/winupdate.conf
 
 VOLUME ["/data/logs", "/data/cache", "/var/www"]

@@ -78,6 +78,20 @@ You can find a list of domains you will want to use for each service over on [uk
 
 Regular commodity hardware (a single 2TB WD Black on an HP Microserver) can achieve peak throughputs of 30MB/s+ using this setup (depending on the specific content being served).
 
+## Changing Upstream DNS
+
+If you need to change the upstream DNS server the cache uses, these are defined by the `UPSTREAM_DNS` environment variable. The defaults are Google DNS (8.8.8.8 and 8.8.4.4).
+
+```
+ UPSTREAM_DNS 8.8.8.8 8.8.4.4
+```
+
+You can override these using the `-e` argument to docker run and specifying your upstream DNS servers. Multiple upstream dns servers are allowed,  separated by whitespace.
+
+```
+-e UPSTREAM_DNS="1.1.1.1 1.0.0.1"
+```
+
 ## Tweaking Cache sizes
 
 Two environment variables are available to manage both the memory and disk cache for a particular container, and are set to the following defaults.
@@ -120,6 +134,10 @@ If you're a games publisher and you'd like LAN parties, gaming centers and other
  - Have your client verify the files and ensure the file they've downloaded matches the file they **should** have downloaded. This cache server acts as a man-in-the-middle so it would be good to ensure the files are correct.
 
  If you need any further advice, please contact us and we'll be glad to help!
+
+## Frequently Asked Questions
+
+If you have any questions, please check [our FAQs](faq.md). If this doesn't answer your question, please raise an issue in GitHub.
 
 ## Thanks
 
